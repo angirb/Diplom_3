@@ -1,4 +1,3 @@
-import groovy.util.logging.Log;
 import io.qameta.allure.junit4.DisplayName;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
@@ -97,6 +96,7 @@ public class TestPersonalAccount extends BaseTest {
         assertTrue(mainPage.checkLoggedIntoAccount());
         mainPage.clickPersonalAccountButton();
         logInPage.clickLogOutButton();
+        assertTrue(logInPage.checkLogInButtonText());
     }
     @After
     public void tearDown() {

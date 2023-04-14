@@ -8,12 +8,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-
+import static org.junit.Assert.assertTrue;
 
 
 public class TestRegistrationPage extends BaseTest {
 
-    private User user;
+
 
     @BeforeClass
     public static void globalSetup() {
@@ -30,6 +30,7 @@ public class TestRegistrationPage extends BaseTest {
     private void registerUser(User user) {
         RegisterPage registerPage = new RegisterPage(driver);
         MainPage mainPage = new MainPage(driver);
+
         mainPage.openMainPage();
         mainPage.clickEnterIntoAccountButton();
         registerPage.clickRegisterTextButton();
@@ -44,6 +45,14 @@ public class TestRegistrationPage extends BaseTest {
     public void testRegisterWithRandomGenerator() {
         User user = UserGenerator.getRandom();
         registerUser(user);
+    }
+    @DisplayName("Тест успешной регистрации пользователя")
+    @Test
+    public void testRegisterWithRandomGenerator2() {
+        User user = new User("Naruto3", "narutoemail5@yandex.ru", "1234567");
+        LogInPage logInPage = new LogInPage(driver);
+        registerUser(user);
+        assertTrue(logInPage.checkLogInButtonText());
 
     }
     @DisplayName("Тест регистрации с случайными данными пользователя и паролем менее пяти символов")

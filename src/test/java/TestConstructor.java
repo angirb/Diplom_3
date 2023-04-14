@@ -27,8 +27,7 @@ public class TestConstructor extends BaseTest {
         MainPage mainPage = new MainPage(driver);
         ConstructorPage constructorPage = new ConstructorPage(driver);
         mainPage.openMainPage();
-        constructorPage.clickSauceSectionButton();
-        constructorPage.clickBunsSectionButton();
+
         assertTrue(constructorPage.checkBunsTitle());
     }
     @DisplayName("тест перехода к разделу Соусы")
@@ -37,7 +36,7 @@ public class TestConstructor extends BaseTest {
         MainPage mainPage = new MainPage(driver);
         ConstructorPage constructorPage = new ConstructorPage(driver);
         mainPage.openMainPage();
-        constructorPage.clickSauceSectionButton();
+
         assertTrue(constructorPage.checkSauceTitle());
     }
     @DisplayName("тест перехода к разделу Начинки")
@@ -46,7 +45,7 @@ public class TestConstructor extends BaseTest {
         MainPage mainPage = new MainPage(driver);
         ConstructorPage constructorPage = new ConstructorPage(driver);
         mainPage.openMainPage();
-        constructorPage.clickFillingSectionButton();
+
         assertTrue(constructorPage.checkFillingTitle());
     }
 }

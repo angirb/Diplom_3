@@ -19,7 +19,6 @@ public class RegisterPage {
     private final By registerPageButtonEnter = By.xpath(".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']");
     private final By registerIncorrectPassword = By.xpath(".//p[text()='Некорректный пароль']");
     private final By registerPageLogInButton = By.xpath("*//a[text() = 'Войти']");
-    private final By registerPageRegisterButton = By.xpath("*//a[text() = 'Зарегистрироваться']");
 
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
@@ -49,10 +48,7 @@ public class RegisterPage {
         driver.findElement(registerPageButtonEnter).click();
     }
     public String checkRegisterIncorrectPassword() {
-       return driver.findElement(registerIncorrectPassword).getText();
-    }
-    public void setRegisterPageRegisterButton() {
-        driver.findElement(registerPageRegisterButton).click();
+        return driver.findElement(registerIncorrectPassword).getText();
     }
     public void clickRegisterLogInButton() {
         driver.findElement(registerPageLogInButton).click();

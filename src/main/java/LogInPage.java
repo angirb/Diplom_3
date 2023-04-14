@@ -11,6 +11,7 @@ public class LogInPage {
     private final By passwordLoginField = By.xpath(".//fieldset[2]/div/div/input");
     private final By logInButton = By.xpath(".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']");
     private final By logOutButton = By.xpath("*//button[text() = 'Выход']");
+    private final By checkLogInText = By.xpath("*//h2[text() = 'Вход']");
     public void openForgotPassPage() {
         driver.get("https://stellarburgers.nomoreparties.site/forgot-password");
     }
@@ -29,5 +30,10 @@ public class LogInPage {
     }
     public void clickLogOutButton() {
         driver.findElement(logOutButton).click();
+    }
+    public boolean checkLogInButtonText() {
+        if(driver.findElement(checkLogInText).isDisplayed());
+        return driver.findElement(checkLogInText).getText().equals("Вход");
+
     }
 }

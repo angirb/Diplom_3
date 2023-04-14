@@ -17,7 +17,6 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        driver.manage().window().maximize();
 
 
 //        System.setProperty("webdriver.chrome.driver", "C:\\Users\\bulin\\WebDriver\\YandexDriver\\bin\\yandexdriver.exe");

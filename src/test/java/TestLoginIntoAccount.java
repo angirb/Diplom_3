@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 @RunWith(Parameterized.class)
 
 public class TestLoginIntoAccount extends BaseTest {
-    private UserAccount userAccount;
+
     private final String email;
     private final String password;
     @BeforeClass
@@ -41,9 +41,9 @@ public class TestLoginIntoAccount extends BaseTest {
                 {"test1@mail.ru", "123456"}
         };
     }
-    private void loginUserTests(UserAccount userAccount) {
+    private void loginUserTests() {
         LogInPage loginPage = new LogInPage(driver);
-        MainPage mainPage = new MainPage(driver);
+
         loginPage.openLogInPage();
         loginPage.setEmailLoginField(email);
         loginPage.setPasswordLoginField(password);
@@ -53,7 +53,7 @@ public class TestLoginIntoAccount extends BaseTest {
     @DisplayName("Тест на вход в аккаунт")
     @Test
     public void testLogInWithRegisteredAccount() {
-        loginUserTests(userAccount);
+        loginUserTests();
         MainPage mainPage = new MainPage(driver);
         assertTrue(mainPage.checkMakeAnOrder());
     }
@@ -65,7 +65,7 @@ public class TestLoginIntoAccount extends BaseTest {
         mainPage.openMainPage();
         mainPage.clickEnterIntoAccountButton();
 
-        loginUserTests(userAccount);
+        loginUserTests();
         assertTrue(mainPage.checkMakeAnOrder());
     }
     @DisplayName("Тест на вход в аккаунт через личный кабинет")
@@ -76,7 +76,7 @@ public class TestLoginIntoAccount extends BaseTest {
         mainPage.openMainPage();
         mainPage.clickPersonalAccountButton();
 
-        loginUserTests(userAccount);
+        loginUserTests();
         assertTrue(mainPage.checkMakeAnOrder());
     }
     @DisplayName("Тест на вход в аккаунт через страницу регистрации")
@@ -88,7 +88,7 @@ public class TestLoginIntoAccount extends BaseTest {
         registerPage.openRegisterPage();
         registerPage.clickRegisterLogInButton();
 
-        loginUserTests(userAccount);
+        loginUserTests();
         assertTrue(mainPage.checkMakeAnOrder());
     }
     @DisplayName("Тест на вход в аккаунт через страницу забыл пароль")
@@ -100,7 +100,7 @@ public class TestLoginIntoAccount extends BaseTest {
         logInPage.openForgotPassPage();
         registerPage.clickRegisterLogInButton();
 
-        loginUserTests(userAccount);
+        loginUserTests();
         assertTrue(mainPage.checkMakeAnOrder());
 
     }
