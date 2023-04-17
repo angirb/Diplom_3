@@ -1,3 +1,4 @@
+import groovy.util.logging.Log;
 import io.qameta.allure.junit4.DisplayName;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
@@ -7,6 +8,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -30,7 +33,6 @@ public class TestRegistrationPage extends BaseTest {
     private void registerUser(User user) {
         RegisterPage registerPage = new RegisterPage(driver);
         MainPage mainPage = new MainPage(driver);
-
         mainPage.openMainPage();
         mainPage.clickEnterIntoAccountButton();
         registerPage.clickRegisterTextButton();
@@ -40,20 +42,32 @@ public class TestRegistrationPage extends BaseTest {
         registerPage.clickRegisterPageButtonRegister();
     }
 
-    @DisplayName("Тест регистрации с случайными данными пользователя")
+    @DisplayName("Тест успешной регистрации с случайными данными пользователя")
     @Test
-    public void testRegisterWithRandomGenerator() {
+    public void testSuccessRegisterUserThroughEnterIntoAccButton() {
         User user = UserGenerator.getRandom();
-        registerUser(user);
-    }
-    @DisplayName("Тест успешной регистрации пользователя")
-    @Test
-    public void testRegisterWithRandomGenerator2() {
-        User user = new User("Naruto3", "narutoemail5@yandex.ru", "1234567");
         LogInPage logInPage = new LogInPage(driver);
+        RegisterPage registerPage = new RegisterPage(driver);
         registerUser(user);
+        registerPage.waitForLoadPage(By.xpath("*//h2[text() = 'Вход']"));
         assertTrue(logInPage.checkLogInButtonText());
-
+    }
+    @DisplayName("Тест успешной регистрации пользователя через личный кабинет")
+    @Test
+    public void testRegisterUserThroughPersonalAccButton() {
+        User user = UserGenerator.getRandom();
+        LogInPage logInPage = new LogInPage(driver);
+        RegisterPage registerPage = new RegisterPage(driver);
+        MainPage mainPage = new MainPage(driver);
+        mainPage.openMainPage();
+        mainPage.clickPersonalAccountButton();
+        registerPage.clickRegisterTextButton();
+        registerPage.setRegisterInputNameField(user.getName());
+        registerPage.setRegisterInputEmailField(user.getEmail());
+        registerPage.setRegisterInputPasswordField(user.getPassword());
+        registerPage.clickRegisterPageButtonRegister();
+        registerPage.waitForLoadPage(By.xpath("*//h2[text() = 'Вход']"));
+        assertTrue(logInPage.checkLogInButtonText());
     }
     @DisplayName("Тест регистрации с случайными данными пользователя и паролем менее пяти символов")
     @Test

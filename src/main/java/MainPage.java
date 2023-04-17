@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 public class MainPage {
     private final WebDriver driver;
     // локатор Кнопки личного кабинета на главной странице
-    private final By personalAccountButton = By.xpath(".//p[text() = 'Личный Кабинет']");
+    private final By personalAccountButton = By.xpath(".//a[(@class='AppHeader_header__link__3D_hX') and (@href='/account')]");
     // локатор Кнопки Войти в аккант на главной странице
     private final By enterIntoAccount = By.xpath(".//button[@class = 'button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg']");
 
@@ -24,22 +24,18 @@ public class MainPage {
         driver.get("https://stellarburgers.nomoreparties.site/");
     }
     public void clickPersonalAccountButton() {
-        if(driver.findElement(personalAccountButton).isDisplayed());
-        driver.findElement(personalAccountButton).click();
+       driver.findElement(personalAccountButton).click();
     }
     public void clickEnterIntoAccountButton() {
-        if(driver.findElement(enterIntoAccount).isDisplayed());
         driver.findElement(enterIntoAccount).click();
     }
     public boolean checkLoggedIntoAccount() {
-        if(driver.findElement(loggedIntoAccount).isDisplayed());
         return driver.findElement(loggedIntoAccount).getText().equals("Соберите бургер");
     }
     public boolean checkMakeAnOrder() {
         return driver.findElement(makeAnOrder).isDisplayed();
     }
     public void clickConstructorButton() {
-        if(driver.findElement(constructorButton).isDisplayed());
         driver.findElement(constructorButton).click();
     }
     public void clickStellaBurgerButton() {

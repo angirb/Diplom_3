@@ -25,14 +25,12 @@ public class LogInPage {
         driver.findElement(passwordLoginField).sendKeys(passwordField);
     }
     public void clickLogInButton() {
-        if (driver.findElement(logInButton).isDisplayed());
         driver.findElement(logInButton).click();
     }
     public void clickLogOutButton() {
         driver.findElement(logOutButton).click();
     }
     public boolean checkLogInButtonText() {
-        if(driver.findElement(checkLogInText).isDisplayed());
         return driver.findElement(checkLogInText).getText().equals("Вход");
 
     }

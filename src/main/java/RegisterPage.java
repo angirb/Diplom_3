@@ -40,11 +40,9 @@ public class RegisterPage {
         driver.findElement(registerInputPasswordField).sendKeys(passwordField);
     }
     public void clickRegisterTextButton() {
-        if(driver.findElement(registerTextButton).isDisplayed());
         driver.findElement(registerTextButton).click();
     }
     public void clickRegisterPageButtonRegister() {
-        if(driver.findElement(registerPageButtonEnter).isDisplayed());
         driver.findElement(registerPageButtonEnter).click();
     }
     public String checkRegisterIncorrectPassword() {
