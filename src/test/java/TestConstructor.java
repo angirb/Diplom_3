@@ -3,11 +3,12 @@ import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import static org.junit.Assert.assertTrue;
+
 
 public class TestConstructor extends BaseTest {
     @BeforeClass
@@ -27,7 +28,7 @@ public class TestConstructor extends BaseTest {
         MainPage mainPage = new MainPage(driver);
         ConstructorPage constructorPage = new ConstructorPage(driver);
         mainPage.openMainPage();
-        constructorPage.clickSauceSectionButton();
+        constructorPage.clickFillingSectionButton();
         constructorPage.clickBunsSectionButton();
         assertTrue(constructorPage.checkBunsTitle());
     }
@@ -48,5 +49,9 @@ public class TestConstructor extends BaseTest {
         mainPage.openMainPage();
         constructorPage.clickFillingSectionButton();
         assertTrue(constructorPage.checkFillingTitle());
+    }
+    @After
+    public void tearDown() {
+        driver.quit();
     }
 }
